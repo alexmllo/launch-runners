@@ -1,18 +1,10 @@
 services:
   runner:
-    image: alexmllo/actions-image:latest
-      # restart: always
+    image: # Your image in a container registry like ECR, dockerhub, etc.
+    entrypoint: ./start.sh
     environment:
-      - OWNER=alexmllo
-      - REPO=test-pipelines
-      - ACCESS_TOKEN=${{ secrets.ACCESS_TOKEN }}
-    deploy:
-      mode: replicated
-      replicas: 6
-      resources:
-        limits:
-          cpus: '0.25'
-          memory: 120M
-        reservations:
-          cpus: '0.15'
-          memory: 60M
+      - OWNER= # Owner of the repository
+      - ACCESS_TOKEN= # Github token with access to the repository
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+

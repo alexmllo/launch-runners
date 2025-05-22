@@ -1,6 +1,6 @@
 #!/bin/bash
 
-REPO=alexmllo/test-pipelines
+REPO=""
 TOKEN=""
 
 RUNNER_LIST=$(curl -H "Authorization: token ${TOKEN}" -H "Accept: application/vnd.github+json" https://api.github.com/repos/${REPO}/actions/runners | jq '[.runners[] | select(.status | contains("offline")) | {id: .id}]')
